@@ -35,7 +35,7 @@ public class LevelGeneration : MonoBehaviour
     {
         Transform chosenLevelPart = levelParts[Random.Range(0, levelParts.Count)];
 
-        Transform lastLevelPart = SpawnLevelPart(chosenLevelPart, lastEndPos + new Vector3(2,0));
+        Transform lastLevelPart = SpawnLevelPart(chosenLevelPart, lastEndPos /*+ new Vector3(2,0)*/);
 
         lastEndPos = lastLevelPart.Find("EndPos").position;
     }
