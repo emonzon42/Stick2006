@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
 
-    public  bool isDead;
+    public bool dead;
     public int score;
     public int numOfCoins;
     private Vector3 lastGroundPos;
@@ -15,7 +15,7 @@ public class PlayerData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isDead = false;
+        dead = false;
         score = 0;
         numOfCoins = 0;
     }
@@ -26,13 +26,13 @@ public class PlayerData : MonoBehaviour
 		if (onGround)
             lastGroundPos = transform.position;
 
-        if (transform.position.y < lastGroundPos.y - 10f)
-            isDead = true;
+        if (transform.position.y < lastGroundPos.y - 20f)
+            dead = true;
 
-        if (isDead)
-            Application.isPlaying = false; //todo: change to die screen
-        else
-            score++;
+        if (dead)
+            ; //todo: change to die screen
+        else if (transform.position.x > lastGroundPos.x)
+            score += 10;
     }
 
     void OnCollisionEnter2D(Collision2D obj)
@@ -40,7 +40,10 @@ public class PlayerData : MonoBehaviour
         if (obj.gameObject.tag == "ground")
         {
             onGround = true;
-        }
+        } else if (obj.gameObject.tag == "enemy")
+		{
+            dead = true;
+		}
     }
 
     void OnCollisionExit2D(Collision2D obj)
