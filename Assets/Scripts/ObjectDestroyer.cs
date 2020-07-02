@@ -6,8 +6,8 @@ public class ObjectDestroyer : MonoBehaviour
 {
     //destroys gameobjects that are far from the player
 
-    private const float SPAWN_DISTANCE = 200f; //the distance between player and next object (de)spawn
-    [SerializeField] public GameObject player;
+    private const float DESPAWN_DISTANCE = 400f; //the distance between player and next object despawn
+    private GameObject player;
 
     void Awake()
 	{
@@ -18,7 +18,7 @@ public class ObjectDestroyer : MonoBehaviour
     void Update()
     {
  //       if(gameObject.GetComponent<ObjectDestroyer>() != null)
-        if (transform.position.x < player.transform.position.x - SPAWN_DISTANCE) //if object is further than set spawn distance from player (should be behind player)
+        if (transform.position.x < player.transform.position.x - DESPAWN_DISTANCE) //if object is further than set spawn distance from player (should be behind player)
             Destroy(this.gameObject);
     }
 }
