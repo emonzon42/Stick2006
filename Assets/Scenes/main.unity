@@ -291,14 +291,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693621483}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a3c2ba0e859543b79d4af386bad444e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 18
-  jumpHeight: 25
-  onGround: 1
+  jumpHeight: 30
+  onGround: 0
   joystick: {fileID: 0}
   jump: 0
 --- !u!61 &1693621485
@@ -401,7 +401,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -419,6 +419,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2e11bdb6d614a18b9ae0ed1ee5d89c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 18
+  jumpHeight: 30
+  onGround: 0
+  firstLaunch: 0
   dead: 0
   score: 0
   numOfCoins: 0
