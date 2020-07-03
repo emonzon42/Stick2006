@@ -25,10 +25,11 @@ public class PlayerData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Alive() )
+		if (Alive())
 		{
             Movement();
-		}
+            score += 10;
+        }
 		else
 		{
             ;//todo: change to die screen
@@ -40,15 +41,14 @@ public class PlayerData : MonoBehaviour
 	{
         if (onGround)
             lastGroundPos = transform.position;
-
-        if (transform.position.y < lastGroundPos.y - 20f) //if player drops 
+        else if (transform.position.y < lastGroundPos.y - 20f) //if player drops from ground
             dead = true;
+
 
         if (dead)
             return false; 
-        else if (transform.position.x > lastGroundPos.x)
-            score += 10;
-        return true;
+        else
+            return true;
     }
 
     void Movement()
