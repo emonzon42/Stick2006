@@ -5,14 +5,10 @@ using UnityEngine;
 public class EnemyGenerator : MonoBehaviour
 {
     public const int MAX = 100000;
-    public const int SPAWNCHANCE = 8;
+    public const int SPAWNCHANCE = 7;
 
     [SerializeField] public GameObject enemy;
     [SerializeField] private List<Transform> spawnPositions;
-
-    
-
-
 
     private void Start()
     {

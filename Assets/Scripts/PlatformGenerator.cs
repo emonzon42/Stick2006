@@ -26,6 +26,7 @@ public class PlatformGenerator : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
     private void Update()
     {
         if (Vector3.Distance(player.transform.position, lastEndPos) < SPAWN_DISTANCE)
