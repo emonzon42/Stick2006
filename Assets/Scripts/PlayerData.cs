@@ -28,7 +28,7 @@ public class PlayerData : MonoBehaviour
 		if (Alive())
 		{
             Movement();
-            score += 10;
+            score++;
         }
 		else
 		{
@@ -36,7 +36,7 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    //checks every frame update if player is alive and whether to continue giving points points
+    //checks every frame update if player is alive
     bool Alive()
 	{
         if (onGround)
@@ -78,6 +78,10 @@ public class PlayerData : MonoBehaviour
 		{
             dead = true;
 		}
+        else if (obj.gameObject.tag == "coin")
+        {
+            numOfCoins++;
+        }
     }
 
     void OnCollisionExit2D(Collision2D obj)

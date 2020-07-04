@@ -17,9 +17,4 @@ public class ScoreTracker : MonoBehaviour
         coins.text = player.numOfCoins.ToString();
 
     }
-
-    
-
-    
-    
 }

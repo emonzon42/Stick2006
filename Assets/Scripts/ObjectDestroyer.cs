@@ -21,4 +21,21 @@ public class ObjectDestroyer : MonoBehaviour
         if (transform.position.x < player.transform.position.x - DESPAWN_DISTANCE) //if object is further than set spawn distance from player (should be behind player)
             Destroy(this.gameObject);
     }
+
+    void OnCollisionEnter2D(Collision2D obj)
+    {
+        if(gameObject.tag == "coin") //if coin
+        {
+            if (obj.gameObject.tag == "Player")
+            {
+                Destroy(this.gameObject);
+            }
+        }
+        else if (gameObject.tag == "enemy")
+            {
+                //todo: killing enemy
+            }
+
+        
+    }
 }
