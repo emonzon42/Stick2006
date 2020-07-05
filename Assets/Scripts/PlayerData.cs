@@ -32,7 +32,7 @@ public class PlayerData : MonoBehaviour
         }
 		else
 		{
-            ;//todo: change to die screen
+            gameObject.SetActive(false);
         }
     }
 
