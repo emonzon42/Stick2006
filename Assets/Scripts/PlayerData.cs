@@ -55,8 +55,8 @@ public class PlayerData : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        dead = true; //todo: change this to only do it if its the deathblock
-        Debug.Log("hi");
+        if (col.gameObject.tag == "deathblock")
+            dead = true;
     }
 
     void OnCollisionEnter2D(Collision2D obj)
