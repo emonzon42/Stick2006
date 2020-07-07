@@ -12,11 +12,10 @@ public class PlayerData : MonoBehaviour
 
     public int score, numOfCoins; //Score
 
-    private Vector3 lastGroundPos; //last held position on ground block
-
     // Start is called before the first frame update
     void Start()
     {
+
         dead = false;
         score = 0;
         numOfCoins = 0;
@@ -25,32 +24,16 @@ public class PlayerData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Alive())
+		if (dead)
+            gameObject.SetActive(false); 
+		else
 		{
             Movement();
             score++;
         }
-		else
-		{
-            gameObject.SetActive(false);
-        }
     }
 
-    //checks every frame update if player is alive
-    bool Alive()
-	{
-        if (onGround)
-            lastGroundPos = transform.position;
-        else if (transform.position.y < lastGroundPos.y - 20f) //if player drops from ground
-            dead = true;
-
-
-        if (dead)
-            return false; 
-        else
-            return true;
-    }
-
+    //players movement data
     void Movement()
 	{
         if (Time.fixedTime % 10 == 0) //every 10 seconds
@@ -58,13 +41,22 @@ public class PlayerData : MonoBehaviour
 
         transform.Translate(Vector2.right * Time.deltaTime * moveSpeed); //player auto run
 
-        if (Input.GetKeyDown(KeyCode.Space) && (onGround || firstLaunch)) //player can only double jump before hitting ground
+        //todo: touch control not working as expected (doesn't read 
+        bool jumped = (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0); //space button for testing only
+
+        if (jumped && (onGround || firstLaunch)) //player can only double jump before hitting ground
         {
             if (firstLaunch)
                 firstLaunch = false; //prevent triple/etc jumping
 
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse); //player jump
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        dead = true; //todo: change this to only do it if its the deathblock
+        Debug.Log("hi");
     }
 
     void OnCollisionEnter2D(Collision2D obj)
