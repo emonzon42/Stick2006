@@ -471,31 +471,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2208561323664937606, guid: 5a74f8d372b0b4412a8ea630a149d8a3,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208561323664937625, guid: 5a74f8d372b0b4412a8ea630a149d8a3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208561323664937626, guid: 5a74f8d372b0b4412a8ea630a149d8a3,
-        type: 3}
-      propertyPath: m_UseAutoMass
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208561323664937626, guid: 5a74f8d372b0b4412a8ea630a149d8a3,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208561323664937626, guid: 5a74f8d372b0b4412a8ea630a149d8a3,
-        type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2208561323664937627, guid: 5a74f8d372b0b4412a8ea630a149d8a3,
         type: 3}
       propertyPath: m_LocalPosition.x
