@@ -7,6 +7,7 @@ public class PlayerData : MonoBehaviour
 {
     public float moveSpeed, jumpHeight; //movement
     public bool onGround, firstLaunch; // ..
+    private Vector3 startPos;
 
     public bool dead; //Life
 
@@ -15,10 +16,10 @@ public class PlayerData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         dead = false;
         score = 0;
         numOfCoins = 0;
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -28,18 +29,24 @@ public class PlayerData : MonoBehaviour
             gameObject.SetActive(false); 
 		else
 		{
-            Movement();
-            score++;
+            Vector3 currentPos = Movement();
+
+            float distRan = currentPos.x - startPos.x;
+
+            if (distRan > score)
+                score++;
         }
     }
 
     //players movement data
-    void Movement()
+    Vector3 Movement()
 	{
         if (Time.fixedTime % 10 == 0) //every 10 seconds
             moveSpeed++;
 
+
         transform.Translate(Vector2.right * Time.deltaTime * moveSpeed); //player auto run
+            
 
         //todo: touch control not working as expected (doesn't read 
         bool jumped = (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0); //space button for testing only
@@ -51,6 +58,8 @@ public class PlayerData : MonoBehaviour
 
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse); //player jump
         }
+
+        return transform.position;
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -60,21 +69,19 @@ public class PlayerData : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D obj)
-    { 
+    {
+
         if (obj.gameObject.tag == "ground")
         {
             onGround = true;
             firstLaunch = false;
         }
         else if (obj.gameObject.tag == "enemy")
-		{
             dead = true;
-		}
         else if (obj.gameObject.tag == "coin")
-        {
             numOfCoins++;
-        }
     }
+
 
     void OnCollisionExit2D(Collision2D obj)
     {
