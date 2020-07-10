@@ -66,6 +66,8 @@ public class PlayerData : MonoBehaviour
     {
         if (col.gameObject.tag == "deathblock")
             dead = true;
+        else if (col.gameObject.tag == "coin")
+            numOfCoins++;
     }
 
     void OnCollisionEnter2D(Collision2D obj)
@@ -78,9 +80,8 @@ public class PlayerData : MonoBehaviour
         }
         else if (obj.gameObject.tag == "enemy")
             dead = true;
-        else if (obj.gameObject.tag == "coin")
-            numOfCoins++;
-    }
+      
+    }  
 
 
     void OnCollisionExit2D(Collision2D obj)
