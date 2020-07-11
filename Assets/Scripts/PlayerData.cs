@@ -34,21 +34,21 @@ public class PlayerData : MonoBehaviour
             float distRan = currentPos.x - startPos.x;
 
             if (distRan > score)
+            {
                 score++;
+
+                if (score % 100 == 0) //every 100 points
+                    moveSpeed++;
+            }
         }
-    }
+    } 
 
     //players movement data
     Vector3 Movement()
 	{
-        if (Time.fixedTime % 10 == 0) //every 10 seconds
-            moveSpeed++;
+        transform.Translate(Vector2.right * Time.deltaTime * moveSpeed); //player auto run           
 
-
-        transform.Translate(Vector2.right * Time.deltaTime * moveSpeed); //player auto run
-            
-
-        //todo: touch control not working as expected (doesn't read 
+        //todo: touch control not working as expected (doesn't read second jump and just does one big jump)
         bool jumped = (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0); //space button for testing only
 
         if (jumped && (onGround || firstLaunch)) //player can only double jump before hitting ground
