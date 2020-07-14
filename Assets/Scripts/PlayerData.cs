@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     public float moveSpeed, jumpHeight; //movement
-    public bool onGround, firstLaunch; // ..
+    public bool onGround, firstLaunch;  // ..
     private Vector3 startPos;
 
     public bool dead; //Life
@@ -47,9 +47,8 @@ public class PlayerData : MonoBehaviour
     Vector3 Movement()
 	{
         transform.Translate(Vector2.right * Time.deltaTime * moveSpeed); //player auto run           
-
-        //todo: touch control not working as expected (doesn't read second jump and just does one big jump)
-        bool jumped = (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0); //space button for testing only
+        
+        bool jumped = ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetKeyDown(KeyCode.Space)); //player tapped the screen / pressed space button
 
         if (jumped && (onGround || firstLaunch)) //player can only double jump before hitting ground
         {
