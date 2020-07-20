@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 3973566449291000568}
   - component: {fileID: 3973566449291000575}
   - component: {fileID: 3973566449291000569}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: floor
   m_TagString: ground
   m_Icon: {fileID: 0}

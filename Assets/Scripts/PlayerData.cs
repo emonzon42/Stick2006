@@ -5,12 +5,13 @@ using UnityEngine;
 //class to hold all player data during game (Movement/Score/Life)
 public class PlayerData : MonoBehaviour
 {
-    public float moveSpeed, jumpHeight; //movement
-    public bool onGround, firstLaunch;  // ..
+    public float moveSpeed, jumpHeight, footRadius; //Movement
+    public LayerMask whatIsGround;
+    public Transform feetPos;
+    public bool onGround, firstLaunch; 
     private Vector3 startPos;
 
     public bool dead; //Life
-
     public int score, numOfCoins; //Score
 
     // Start is called before the first frame update
@@ -46,16 +47,26 @@ public class PlayerData : MonoBehaviour
     //players movement data
     Vector3 Movement()
 	{
+
         transform.Translate(Vector2.right * Time.deltaTime * moveSpeed); //player auto run           
-        
+
         bool jumped = ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetKeyDown(KeyCode.Space)); //player tapped the screen / pressed space button
+
+        onGround = Physics2D.OverlapCircle(feetPos.position, footRadius, whatIsGround);
+
+        if (onGround)
+            firstLaunch = false;
 
         if (jumped && (onGround || firstLaunch)) //player can only double jump before hitting ground
         {
+            //prevents triple/etc jumping
             if (firstLaunch)
-                firstLaunch = false; //prevent triple/etc jumping
+                firstLaunch = false;
+            else
+                firstLaunch = true;
 
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse); //player jump
+            
         }
 
         return transform.position;
@@ -72,23 +83,9 @@ public class PlayerData : MonoBehaviour
     void OnCollisionEnter2D(Collision2D obj)
     {
 
-        if (obj.gameObject.tag == "ground")
-        {
-            onGround = true;
-            firstLaunch = false;
-        }
-        else if (obj.gameObject.tag == "enemy")
+        if (obj.gameObject.tag == "enemy")
             dead = true;
       
     }  
 
-
-    void OnCollisionExit2D(Collision2D obj)
-    {
-        if (obj.gameObject.tag == "ground")
-        {
-            onGround = false;
-            firstLaunch = true;
-        }
-    }
 }
