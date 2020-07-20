@@ -130,12 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2e11bdb6d614a18b9ae0ed1ee5d89c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &554206111 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 391629862650040937, guid: a84b0ea59f4a54172841421dd3f05f2c,
-    type: 3}
-  m_PrefabInstance: {fileID: 391629862130438646}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1439118417
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +326,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 391629862650040936, guid: a84b0ea59f4a54172841421dd3f05f2c,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 391629862650040936, guid: a84b0ea59f4a54172841421dd3f05f2c,
+        type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 391629862650040937, guid: a84b0ea59f4a54172841421dd3f05f2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -415,7 +419,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 554206111}
+      objectReference: {fileID: 554206110}
     - target: {fileID: 4550471154828273404, guid: bb2361d3ef3b74ccb9c73854e3719aeb,
         type: 3}
       propertyPath: m_LocalPosition.x

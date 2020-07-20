@@ -23,6 +23,12 @@ public class PlayerData : MonoBehaviour
         startPos = transform.position;
     }
 
+    void FixedUpdate()
+    {
+        if (!GetComponent<SpriteRenderer>().IsVisibleFrom(Camera.main)) //if player is no longer in view of camera (i.e. player crashed too many times)
+            dead = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -40,6 +46,7 @@ public class PlayerData : MonoBehaviour
 
                 if (score % 100 == 0) //every 100 points
                     moveSpeed++;
+
             }
         }
     } 
