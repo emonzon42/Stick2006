@@ -170,6 +170,7 @@ MonoBehaviour:
   - {fileID: 7425985189996790118, guid: 5cf8222f0fc8142f694296e5975c1676, type: 3}
   - {fileID: 8259064562247174744, guid: 4e169925c4cf64c289fe9afdd7d5ebf2, type: 3}
   - {fileID: 1088614776243784628, guid: 152251c349c3b4355851474fecd383c2, type: 3}
+  - {fileID: 5200869800871172707, guid: 2dacd5f7708e042eab5d4832c597db5e, type: 3}
 --- !u!4 &1439118419
 Transform:
   m_ObjectHideFlags: 0
@@ -326,16 +327,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 391629862650040936, guid: a84b0ea59f4a54172841421dd3f05f2c,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 391629862650040936, guid: a84b0ea59f4a54172841421dd3f05f2c,
-        type: 3}
-      propertyPath: whatIsGround.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     - target: {fileID: 391629862650040937, guid: a84b0ea59f4a54172841421dd3f05f2c,
         type: 3}
       propertyPath: m_LocalPosition.x

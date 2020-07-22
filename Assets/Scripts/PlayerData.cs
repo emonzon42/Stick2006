@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//class to hold all player data during game (Movement/Score/Life)
+//all player behavior data during game (Movement/Score/Life)
 public class PlayerData : MonoBehaviour
 {
-    public float moveSpeed, jumpHeight, footRadius; //Movement
+    public float moveSpeed, jumpHeight, jumpCount, jumpTime, footRadius; //Movement
     public LayerMask whatIsGround;
     public Transform feetPos;
-    public bool onGround, firstLaunch; 
     private Vector3 startPos;
+    private float jumpTimeCounter;
+    private bool isJumping;
 
     public bool dead; //Life
+
     public int score, numOfCoins; //Score
 
     // Start is called before the first frame update
@@ -57,24 +59,35 @@ public class PlayerData : MonoBehaviour
 
         transform.Translate(Vector2.right * Time.deltaTime * moveSpeed); //player auto run           
 
-        bool jumped = ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetKeyDown(KeyCode.Space)); //player tapped the screen / pressed space button
-
-        onGround = Physics2D.OverlapCircle(feetPos.position, footRadius, whatIsGround);
+        bool jumpButtonPressed = (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)); //player tapped the screen / pressed space button
+        bool onGround = (Physics2D.OverlapCircle(feetPos.position, footRadius, whatIsGround) && !isJumping);
 
         if (onGround)
-            firstLaunch = false;
+            jumpCount = 0; //player jump recharges when hitting ground
 
-        if (jumped && (onGround || firstLaunch)) //player can only double jump before hitting ground
+        if (jumpButtonPressed && jumpCount < 2) //player can only double jump before hitting ground
         {
-            //prevents triple/etc jumping
-            if (firstLaunch)
-                firstLaunch = false;
-            else
-                firstLaunch = true;
-
+            jumpCount++;
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse); //player jump
-            
         }
+
+        /* Length of time holding jump button affects how high in the air player goes */
+        bool jumpButtonHeld = (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Space));
+        if (jumpButtonHeld && isJumping)
+        {
+            if(jumpTimeCounter > 0)
+            {
+                GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse); //player jump
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+                isJumping = false;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) //lets go of jump button
+            isJumping = false;
 
         return transform.position;
     }
