@@ -17,9 +17,10 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if(dead)
+            gameObject.SetActive(false);
         //Enemy makes a move every two seconds by picking a random num from 0-100
-		if (Time.fixedTime % 2 == 0)
+        else if (Time.fixedTime % 2 == 0)
 		{
             int randnum = Random.Range(0, 100);
             
@@ -32,19 +33,9 @@ public class EnemyBehavior : MonoBehaviour
          
     }
 
-    void OnCollisionEnter2D(Collision2D obj)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (obj.gameObject.tag == "Player")
-        {
-            ; //PLACEHOLDER
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D obj)
-    {
-        if (obj.gameObject.tag == "Player")
-        {
-            ;//PLACEHOLDER
-        }
+        if (col.gameObject.tag == "attack")
+            dead = true;
     }
 }
