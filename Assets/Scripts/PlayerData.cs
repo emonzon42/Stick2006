@@ -109,6 +109,7 @@ public class PlayerData : MonoBehaviour
             dead = true;
         else if (col.gameObject.tag == "coin")
             numOfCoins++;
+      
     }
 
     void OnCollisionEnter2D(Collision2D obj)
@@ -117,6 +118,11 @@ public class PlayerData : MonoBehaviour
         if (obj.gameObject.tag == "enemy")
             dead = true;
       
-    }  
+    }
+
+    void KilledEnemy()
+    {
+        numOfCoins += 25;
+    }
 
 }

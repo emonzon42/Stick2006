@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 222622556}
   - component: {fileID: 1381567185}
+  - component: {fileID: 1774160883}
   m_Layer: 0
   m_Name: FeetPos
   m_TagString: attack
@@ -57,6 +58,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.9073462, y: 5.5543284}
   m_EdgeRadius: 0
+--- !u!114 &1774160883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222622555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7648e5df628f14c46a86ea7bfce840ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &342852385
 GameObject:
   m_ObjectHideFlags: 0
