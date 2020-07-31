@@ -4,7 +4,7 @@ Surfers but as the Chrome Dinosaur game. It's a 2D side-scrolling game where you
 obstacles for as long as you can. If Flappy Bird can make it big so can I.
 
 This is an idea where the game is currently at:
-![stickrun](https://github.com/emonzon42/Stick2006/tree/master/Assets/Pictures/stickrun.gif)
+![stickrun](https://github.com/emonzon42/Stick2006/blob/master/Assets/Pictures/stickrun.gif)
 
 
 Note: This is my first platformer game, and my first full project made using Unity with Visual Studio. I'm
