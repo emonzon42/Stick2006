@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //all player behavior data during game (Movement/Score/Life)
-public class PlayerData : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float moveSpeed, jumpHeight, jumpCount, jumpTime, footRadius; //Movement
     public LayerMask whatIsGround;
