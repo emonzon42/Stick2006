@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public PlayerData player;
+    public Player player;
     public float cameraDistance = 30.0f;
     private float timeAtEdge; //fixed time when player is first detected near edge
     private bool moveBack;

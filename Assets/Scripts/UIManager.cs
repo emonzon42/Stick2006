@@ -6,7 +6,7 @@ using UnityEngine.UI;
 //changes onscreen UI
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] public PlayerData player;
+    [SerializeField] public Player player;
     public Text score, coins, loseText;
     public Button restart;
 
