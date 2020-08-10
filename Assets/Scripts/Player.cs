@@ -15,10 +15,12 @@ public class Player : MonoBehaviour
     public bool dead; //Life
 
     public int score, numOfCoins; //Score
+    public int highScore, totalCoins, lastScore; //Lifetime scores
 
     // Start is called before the first frame update
     void Start()
     {
+        LoadPlayer();
         dead = false;
         score = 0;
         numOfCoins = 0;
@@ -35,10 +37,19 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (dead)
-            gameObject.SetActive(false); 
-		else
-		{
+        if (dead)
+        {
+            totalCoins += numOfCoins;
+            lastScore = score;
+
+            if (highScore < score)
+                highScore = score;
+            
+            SavePlayer();
+            gameObject.SetActive(false);
+        }
+        else
+        {
             Vector3 currentPos = Movement();
 
             float distRan = currentPos.x - startPos.x;
@@ -103,19 +114,19 @@ public class Player : MonoBehaviour
         return transform.position;
     }
 
+
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "deathblock")
+        if (col.gameObject.tag == "deathblock") //player touches out-of-bounds block
             dead = true;
-        else if (col.gameObject.tag == "coin")
+        else if (col.gameObject.tag == "coin") //player touches coin
             numOfCoins++;
       
     }
 
     void OnCollisionEnter2D(Collision2D obj)
     {
-
-        if (obj.gameObject.tag == "enemy")
+        if (obj.gameObject.tag == "enemy") //player runs into enemy
             dead = true;
       
     }
@@ -123,6 +134,20 @@ public class Player : MonoBehaviour
     void KilledEnemy()
     {
         numOfCoins += 25;
+    }
+
+    void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        highScore = data.highScore;
+        totalCoins = data.totalCoins;
+        lastScore = data.lastScore;
     }
 
 }
