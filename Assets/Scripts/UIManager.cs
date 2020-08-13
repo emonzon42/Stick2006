@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] public Player player;
     public Text score, coins, loseText;
-    public Button restart;
+    public List<Button> buttons;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +33,8 @@ public class UIManager : MonoBehaviour
     void Activate(bool b)
     {
         loseText.gameObject.SetActive(b);
-        restart.gameObject.SetActive(b);
+
+        for(int i = 0; i < buttons.Count; i++)
+            buttons[i].gameObject.SetActive(b);
     }
 }
