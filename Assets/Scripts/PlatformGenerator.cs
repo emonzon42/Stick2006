@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlatformGenerator : MonoBehaviour
 {
     //how the platforms generate
@@ -11,21 +10,32 @@ public class PlatformGenerator : MonoBehaviour
 
     [SerializeField] public GameObject player;
     [SerializeField] private Transform levelStart; //start of level
-    [SerializeField] private List<Transform> platformParts; //all platform parts that can be spawned
+    [SerializeField] private List<GameObject> platformParts; //all platform parts that can be spawned
 
     private Vector3 lastEndPos; //last end position of platform
 
-
     private void Awake()
     {
+        platformParts = new List<GameObject>();
+
+        Object[] loadedObjs = Resources.LoadAll("WorldPieces", typeof(GameObject)); //loads all platforms from resources
+
+        foreach (GameObject loadedObj in loadedObjs)
+        {
+            platformParts.Add(loadedObj);
+        }
+
         lastEndPos = levelStart.Find("EndPos").position;
         
+    }
+
+    void Start()
+    {
         int startingSpawns = 5;
         for(int i = 0; i < startingSpawns; i++){
             SpawnPlatform();
         }
-    }
-
+    }    
     // Update is called once per frame
     private void Update()
     {
@@ -33,19 +43,21 @@ public class PlatformGenerator : MonoBehaviour
             SpawnPlatform();
     }
 
+    //randomly chooses a platform part and calls sister function to spawn it
     private void SpawnPlatform()
     {
-        Transform chosenPart = platformParts[Random.Range(0, platformParts.Count)];
+        GameObject chosenPart = platformParts[UnityEngine.Random.Range(0, platformParts.Count)];
 
-        Transform lastPlatform = SpawnPlatform(chosenPart, lastEndPos);
+        GameObject lastPlatform = SpawnPlatform(chosenPart, lastEndPos);
 
-        lastEndPos = lastPlatform.Find("EndPos").position;
+        lastEndPos = lastPlatform.transform.Find("EndPos").position;
 
     }
 
-    private Transform SpawnPlatform(Transform platform, Vector3 spawnPos)
+    //spawns platforms next to 
+    private GameObject SpawnPlatform(GameObject platform, Vector3 spawnPos)
     {
-        Transform lastPlatform = Instantiate(platform, spawnPos, Quaternion.identity);
+        GameObject lastPlatform = Instantiate(platform, spawnPos, Quaternion.identity);
         
         return lastPlatform;
     }
