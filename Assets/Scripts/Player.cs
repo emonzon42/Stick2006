@@ -44,12 +44,13 @@ public class Player : MonoBehaviour
 
             if (highScore < score)
                 highScore = score;
-            
+
             SavePlayer();
             gameObject.SetActive(false);
         }
-        else
+        else if (!UIManager.gameIsPaused)
         {
+           
             Vector3 currentPos = Movement();
 
             float distRan = currentPos.x - startPos.x;

@@ -6,21 +6,29 @@ using UnityEngine.UI;
 //changes onscreen UI
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] public Player player;
-    public Text score, coins, loseText;
-    public List<Button> buttons;
+    public Player player;
+    public Text score, coins;
+    public GameObject gameOverUI, pauseMenuUI;
+    public Button pauseButton;
+
+    public static bool gameIsPaused;
 
     // Start is called before the first frame update
     void Start()
     {
-        Activate(false);
-
+        gameIsPaused = false;
+        Time.timeScale = 1f;
+        GameOver(false);
+        pauseButton.gameObject.SetActive(true);
     }
     // Update is called once per frame
     void Update()
     {
         if (player.dead)
-            Activate(true);
+        {
+            Time.timeScale = 0f;
+            GameOver(true);
+        }
         else
         {
             score.text = player.score.ToString();
@@ -29,12 +37,24 @@ public class UIManager : MonoBehaviour
 
     }
 
-    // (De)activates lose screen ui
-    void Activate(bool b)
+    // (De)activates gameover ui
+    void GameOver(bool b)
     {
-        loseText.gameObject.SetActive(b);
+        gameOverUI.SetActive(b);
+    }
 
-        for(int i = 0; i < buttons.Count; i++)
-            buttons[i].gameObject.SetActive(b);
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+        pauseButton.gameObject.SetActive(true);
     }
 }
