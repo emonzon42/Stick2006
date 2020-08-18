@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //changes onscreen UI
 public class UIManager : MonoBehaviour
@@ -56,5 +57,15 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         gameIsPaused = false;
         pauseButton.gameObject.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("main");
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
     }
 }
