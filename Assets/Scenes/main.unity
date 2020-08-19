@@ -128,11 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 391629862650040936, guid: 3d50514ea2f2e49e590f0a194efcaf78,
-        type: 3}
-      propertyPath: jumpHeight
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 391629862650040937, guid: 3d50514ea2f2e49e590f0a194efcaf78,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -270,7 +265,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 292966026, guid: cb7ca34965197446c866881629718235, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.9
+      value: -13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 292966026, guid: cb7ca34965197446c866881629718235, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 61.85118
+      objectReference: {fileID: 0}
+    - target: {fileID: 292966026, guid: cb7ca34965197446c866881629718235, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 292966026, guid: cb7ca34965197446c866881629718235, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15.720033
       objectReference: {fileID: 0}
     - target: {fileID: 3655987063365134398, guid: cb7ca34965197446c866881629718235,
         type: 3}
@@ -431,7 +438,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -534,6 +541,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 721067989, guid: bb2361d3ef3b74ccb9c73854e3719aeb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4550471153206365482, guid: bb2361d3ef3b74ccb9c73854e3719aeb,
         type: 3}
       propertyPath: player
