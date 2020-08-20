@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 18
-  jumpHeight: 4
+  jumpHeight: 6
   jumpCount: 0
   jumpTime: 0.15
   footRadius: 0.3
@@ -893,6 +893,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 3d39b4a420ac54e89bd8eb23ad990f09, type: 3}
       propertyPath: m_Name
       value: stickman
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 3d39b4a420ac54e89bd8eb23ad990f09, type: 3}
+      propertyPath: m_TagString
+      value: attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 3d39b4a420ac54e89bd8eb23ad990f09, type: 3}
+      propertyPath: m_TagString
+      value: attack
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3d39b4a420ac54e89bd8eb23ad990f09, type: 3}
       propertyPath: m_LocalPosition.x

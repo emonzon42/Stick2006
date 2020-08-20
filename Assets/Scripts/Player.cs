@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
                 score++;
 
                 if (score % 100 == 0) //every 100 points
-                    moveSpeed++;
+                    moveSpeed+=.5f;
 
             }
         }
