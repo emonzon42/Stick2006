@@ -10,6 +10,18 @@ This is an idea where the game is currently at:
 Note: This is my first platformer game, and my first full project made using Unity with Visual Studio. I'm
 hoping to use the knowledge gained from building this to apply to future games/applications.
 
+## How to Build
+Open the project in Unity then goto File -> Build Settings -> and ensure the settings are as follows:
+
+Open Scenes:
+- Scene/StartMenu   (0)
+- Scene/main        (1)
+
+Platform: 
+**iOS**
+
+After just press Build and Run and it should open and build in XCode. 
+
 ## Contributing
 To be upright and honest, I am **NOT** a graphic designer. While I can code, I suck at graphics (which is
 why this is a really minimal graphical game) and most of the graphics look like they were drawn by a 10 
