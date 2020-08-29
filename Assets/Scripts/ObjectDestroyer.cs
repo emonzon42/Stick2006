@@ -22,27 +22,14 @@ public class ObjectDestroyer : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-    void OnTriggerExit2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (gameObject.tag == "coin") //if coin
+        if (gameObject.tag == "coin") //if coin is collected by player destroy it
         {
             if (col.gameObject.tag == "Player")
             {
                 Destroy(this.gameObject);
             }
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D obj)
-    {
-        if (gameObject.tag == "coin") //if coin
-        {
-            if (gameObject.tag == "enemy")
-            {
-                //todo: killing enemy
-            }
-
-        }
-        
     }
 }
