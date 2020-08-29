@@ -118,10 +118,15 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "deathblock") //player touches out-of-bounds block
+        if (col.gameObject.tag == "deathblock")
+        { //player touches out-of-bounds block
             dead = true;
-        else if (col.gameObject.tag == "coin") //player touches coin
+        }
+        else if (col.gameObject.tag == "coin")
+        { //player touches coin
+            FindObjectOfType<AudioManager>().Play("coin");
             numOfCoins++;
+        }
       
     }
 

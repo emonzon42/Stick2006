@@ -50,6 +50,9 @@ public class EnemyBehavior : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "attack")
+        {
+            FindObjectOfType<AudioManager>().Play("enemydeath");
             dead = true;
+        }
     }
 }
