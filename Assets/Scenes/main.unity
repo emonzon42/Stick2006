@@ -153,7 +153,7 @@ MonoBehaviour:
   sounds:
   - name: BG
     clip: {fileID: 8300000, guid: 3ae9cc5a826b945359fc309d53e88aa1, type: 3}
-    volume: 0.5
+    volume: 0.38
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -165,7 +165,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: enemydeath
     clip: {fileID: 8300000, guid: f8ab027fe4f5045aa9c8c8093e153c6a, type: 3}
-    volume: 0.65
+    volume: 0.58
     pitch: 1.09
     loop: 0
     source: {fileID: 0}
@@ -190,6 +190,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1381567185, guid: 3d50514ea2f2e49e590f0a194efcaf78, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.17827988
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381567185, guid: 3d50514ea2f2e49e590f0a194efcaf78, type: 3}
+      propertyPath: m_Size.x
+      value: 9.171543
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381567185, guid: 3d50514ea2f2e49e590f0a194efcaf78, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.08276272
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381567185, guid: 3d50514ea2f2e49e590f0a194efcaf78, type: 3}
+      propertyPath: m_Size.y
+      value: 8.629971
+      objectReference: {fileID: 0}
+    - target: {fileID: 391629861096896982, guid: 3d50514ea2f2e49e590f0a194efcaf78,
+        type: 3}
+      propertyPath: m_TagString
+      value: attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 391629861096896986, guid: 3d50514ea2f2e49e590f0a194efcaf78,
+        type: 3}
+      propertyPath: m_TagString
+      value: attack
+      objectReference: {fileID: 0}
     - target: {fileID: 391629862650040937, guid: 3d50514ea2f2e49e590f0a194efcaf78,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -250,7 +276,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1997335052, guid: 3d50514ea2f2e49e590f0a194efcaf78, type: 3}
+    - {fileID: 1226538970, guid: 3d50514ea2f2e49e590f0a194efcaf78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d50514ea2f2e49e590f0a194efcaf78, type: 3}
 --- !u!1 &1439118417
 GameObject:

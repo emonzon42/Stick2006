@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class ChildCollider : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D col)
+    private bool touchingEnemy;
+
+    void OnTriggerExit2D(Collider2D col)
     {
-        if(col.gameObject.tag == "enemy")
+        if (touchingEnemy)
+            return;
+        else  if (col.gameObject.tag == "enemy")
+        {
+            touchingEnemy = true;
             this.GetComponent<Collider2D>().attachedRigidbody.SendMessage("KilledEnemy");
+        }
+           
     }
 }
