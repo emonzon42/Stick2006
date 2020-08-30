@@ -20,7 +20,7 @@ public class EnemyBehavior : MonoBehaviour
     void FixedUpdate()
     {
         if(dead)
-            gameObject.SetActive(false);
+            Destroy(this.gameObject);
 
         //Enemy makes a move every 1/8th seconds by picking a random num from 0-100
         else if (Time.fixedTime % 0.125 == 0)
