@@ -9,6 +9,7 @@ public class CameraMovement : MonoBehaviour
     private float timeAtEdge; //fixed time when player is first detected near edge
     private bool moveBack;
 
+    //  Used for initialization
     private void Awake()
     {
         GetComponent<UnityEngine.Camera>().orthographicSize = ((Screen.height / 2) / cameraDistance);
@@ -20,7 +21,7 @@ public class CameraMovement : MonoBehaviour
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 4, transform.position.z); //camera starts with player in middle of view
     }
 
-    // Update is called once per frame
+    // FixedUpdate is called every fixed frame-rate frame
     void FixedUpdate()
     {
         if(!player.dead && !moveBack)
@@ -42,10 +43,8 @@ public class CameraMovement : MonoBehaviour
             moveBack = false;
             timeAtEdge = 0;
         }
-
-
     }
-
+    // Checks if player is player is near edge of screen
     bool PlayerIsNearEdge()
     {
         if (player.transform.position.x < transform.position.x - 25)

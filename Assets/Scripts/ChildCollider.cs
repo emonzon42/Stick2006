@@ -6,6 +6,7 @@ public class ChildCollider : MonoBehaviour
 {
     private bool touchingEnemy;
 
+    // When the Collider has stopped touching the trigger.
     void OnTriggerExit2D(Collider2D col)
     {
         if (touchingEnemy)

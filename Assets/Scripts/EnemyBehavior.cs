@@ -46,7 +46,8 @@ public class EnemyBehavior : MonoBehaviour
         }
 
     }
-
+    
+    // Sent when another object enters a trigger collider attached to this object
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "attack")

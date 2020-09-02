@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         startPos = transform.position;
         
     }
-
+    // FixedUpdate is called every fixed frame-rate frame
     void FixedUpdate()
     {
         if (!GetComponent<Renderer>().IsVisibleFrom(Camera.main)) //if player is no longer in view of camera (i.e. player crashed too many times)
@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
         return transform.position;
     }
 
-
+    // Sent when another object enters a trigger collider attached to this object
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "deathblock")
@@ -129,7 +129,8 @@ public class Player : MonoBehaviour
         }
       
     }
-
+    
+    // Sent when an incoming collider makes contact with this object's collider
     void OnCollisionEnter2D(Collision2D obj)
     {
         if (obj.gameObject.tag == "enemy") //player runs into enemy
@@ -137,16 +138,19 @@ public class Player : MonoBehaviour
       
     }
 
+    // Message recieved after killing enemy
     void KilledEnemy()
     {
         numOfCoins += 25;
     }
 
+    // Saves player data
     void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
     }
 
+    // Loads player data
     void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();

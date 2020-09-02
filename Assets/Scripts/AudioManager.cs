@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
-    
+    //  Used for initialization
     void Awake()
     {
        foreach (Sound s in sounds)

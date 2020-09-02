@@ -14,6 +14,7 @@ public class PlatformGenerator : MonoBehaviour
 
     private Vector3 lastEndPos; //last end position of platform
 
+    // Used for initialization
     private void Awake()
     {
         platformParts = new List<GameObject>();
@@ -28,7 +29,7 @@ public class PlatformGenerator : MonoBehaviour
         lastEndPos = levelStart.Find("EndPos").position;
         
     }
-
+    // Start is called before the first frame update
     void Start()
     {
         int startingSpawns = 5;
@@ -54,7 +55,7 @@ public class PlatformGenerator : MonoBehaviour
 
     }
 
-    //spawns platforms next to 
+    //spawns platforms at spawnPos
     private GameObject SpawnPlatform(GameObject platform, Vector3 spawnPos)
     {
         GameObject lastPlatform = Instantiate(platform, spawnPos, Quaternion.identity);

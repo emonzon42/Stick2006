@@ -10,6 +10,7 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] public GameObject enemy;
     [SerializeField] private List<Transform> spawnPositions;
 
+    // Start is called before the first frame update
     private void Start()
     {
         for (int i = 0; i < spawnPositions.Count; i++)
@@ -17,6 +18,7 @@ public class EnemyGenerator : MonoBehaviour
                 SpawnEnemy();
     }
 
+    // Spawns enemies at one of the spawn positions
 	private void SpawnEnemy()
 	{
         Transform spawnPos = spawnPositions[Random.Range(0, spawnPositions.Count)];
