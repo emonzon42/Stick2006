@@ -13,6 +13,7 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] private List<GameObject> platformParts; //all platform parts that can be spawned
 
     private Vector3 lastEndPos; //last end position of platform
+    private GameObject lastPlatformPart;
 
     // Used for initialization
     private void Awake()
@@ -49,6 +50,14 @@ public class PlatformGenerator : MonoBehaviour
     {
         GameObject chosenPart = platformParts[UnityEngine.Random.Range(0, platformParts.Count)];
 
+        //prevent duplicates in a row
+        if (chosenPart == lastPlatformPart){
+            SpawnPlatform(); //to basically reroll and get a different piece
+            return;
+        }else{
+            lastPlatformPart = chosenPart;
+        }
+            
         GameObject lastPlatform = SpawnPlatform(chosenPart, lastEndPos);
 
         lastEndPos = lastPlatform.transform.Find("EndPos").position;
