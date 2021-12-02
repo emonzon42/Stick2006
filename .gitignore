@@ -20,3 +20,6 @@
 .DS_Store
 *.unity.*
 *.icloud
+
+#External libraries (will be provided in release tab as seperate download)
+TextMesh Pro/
